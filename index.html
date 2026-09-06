@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobilepay Login</title>
+</head>
+<body style="background-color: #f3f4f6; font-family: 'Segoe UI', Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px;">
+
+    <!-- মোবাইলপে অ্যাপ কন্টেইনার -->
+    <div style="background-color: white; width: 100%; max-width: 360px; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center;">
+        
+        <!-- Mobilepay লোগো আইকন -->
+        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #11998e, #38ef7d); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; color: white; font-size: 32px; font-weight: bold; box-shadow: 0 4px 12px rgba(56, 239, 125, 0.3);">
+            M
+        </div>
+
+        <!-- অ্যাপের নাম ও স্লোগান -->
+        <h2 style="color: #11998e; margin: 0 0 5px 0; font-size: 26px; font-weight: 800; letter-spacing: 0.5px;">Mobilepay</h2>
+        <p style="color: #666; margin: 0 0 25px 0; font-size: 14px;">আপনার মোবাইল ব্যাংকিং পার্টনার</p>
+
+        <!-- লগইন ফর্ম শুরু -->
+        <form onsubmit="event.preventDefault(); alert('Mobilepay-তে লগইন সফল হয়েছে!');">
+            
+            <!-- ইউজারনেম/মোবাইল ইনপুট -->
+            <input type="text" placeholder="মোবাইল নম্বর বা অ্যাকাউন্ট আইডি" required style="width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 16px; box-sizing: border-box; background-color: #f9fafb; outline: none;">
+            
+            <!-- পাসওয়ার্ড ইনপুট কন্টেইনার (Show/Hide বাটনের জন্য) -->
+            <div style="position: relative; margin-bottom: 16px; width: 100%; box-sizing: border-box;">
+                <input type="password" id="passwordInput" placeholder="সিক্রেট পিন বা পাসওয়ার্ড" required style="width: 100%; padding: 14px 50px 14px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 16px; box-sizing: border-box; background-color: #f9fafb; outline: none;">
+                
+                <!-- শো/হাইড বাটন -->
+                <button type="button" onclick="togglePassword()" id="toggleBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #11998e; font-size: 12px; font-weight: bold; cursor: pointer; padding: 5px;">SHOW</button>
+            </div>
+            
+            <!-- লগইন বাটন -->
+            <button type="submit" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(17, 153, 142, 0.2); margin-bottom: 15px;">লগইন করুন</button>
+            
+        </form>
+
+        <!-- ফরগোট পাসওয়ার্ড লিংক -->
+        <a href="#" onclick="forgotPassword()" style="color: #11998e; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 20px; font-weight: 600;">পিন বা পাসওয়ার্ড ভুলে গেছেন?</a>
+        
+        <hr style="border: 0; height: 1px; background-color: #e5e7eb; margin-bottom: 20px;">
+
+        <!-- নতুন অ্যাকাউন্ট বাটন -->
+        <p style="color: #666; font-size: 14px; margin-bottom: 10px;">Mobilepay-তে নতুন?</p>
+        <button onclick="alert('রেজিস্ট্রেশন ফর্মটি লোড হচ্ছে...')" style="width: 100%; padding: 12px; background-color: transparent; color: #11998e; border: 2px solid #11998e; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">নতুন অ্যাকাউন্ট তৈরি করুন</button>
+
+    </div>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        // শো-হাইড ফাংশন
+        function togglePassword() {
+            var passwordField = document.getElementById("passwordInput");
+            var toggleButton = document.getElementById("toggleBtn");
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.innerHTML = "HIDE";
+            } else {
+                passwordField.type = "password";
+                toggleButton.innerHTML = "SHOW";
+            }
+        }
+
+        // ফরগোট পাসওয়ার্ড ফাংশন
+        function forgotPassword() {
+            var accountInfo = prompt("Mobilepay পাসওয়ার্ড রিসেট করতে আপনার রেজিস্টার্ড মোবাইল নম্বরটি দিন:");
+            if (accountInfo) {
+                alert("Mobilepay ওটিপি (OTP) কোডটি আপনার এই নম্বরে পাঠানো হয়েছে: " + accountInfo + "\nঅনুগ্রহ করে ৬ সংখ্যার কোডটি দিয়ে পিন রিসেট করুন।");
+            }
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobilepay Home Screen</title>
+</head>
+<body style="background-color: #f3f4f6; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center;">
+
+    <!-- মোবাইল স্ক্রিন কন্টেইনার -->
+    <div style="background-color: white; width: 100%; max-width: 360px; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.1); position: relative; display: flex; flex-direction: column;">
+        
+        <!-- টপ অ্যাপ বার (Header) -->
+        <div style="background: linear-gradient(135deg, #11998e, #38ef7d); padding: 25px 20px; color: white; border-radius: 0 0 25px 25px; box-shadow: 0 4px 10px rgba(17, 153, 142, 0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px; font-weight: 700;">Mobilepay</h3>
+                    <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.9;">স্বাগতম, ইউজার!</p>
+                </div>
+                <!-- প্রোফাইল আইকন -->
+                <div style="width: 40px; height: 40px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; border: 2px solid white;">M</div>
+            </div>
+
+            <!-- ব্যালেন্স চেক করার বিশেষ বাটন -->
+            <div onclick="checkBalance()" style="background-color: white; color: #11998e; margin-top: 20px; padding: 12px; border-radius: 30px; text-align: center; font-weight: bold; cursor: pointer; box-shadow: 0 3px 6px rgba(0,0,0,0.1); transition: 0.3s;" id="balanceBox">
+                💰 ব্যালেন্স দেখতে এখানে ট্যাপ করুন
+            </div>
+        </div>
+
+        <!-- মেইন সার্ভিস গ্রিড (Services) -->
+        <div style="padding: 20px; flex: 1;">
+            <h4 style="color: #666; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">প্রধান সেবাসমূহ</h4>
+            
+            <!-- ৪টি সার্ভিসের গ্রিড লেআউট -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                
+                <!-- সেন্ড মানি -->
+                <div onclick="alert('সেন্ড মানি অপশনটি লোড হচ্ছে...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;">
+                    <span style="font-size: 28px;">💸</span>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600; color: #333;">সেন্ড মানি</p>
+                </div>
+
+                <!-- মোবাইল রিচার্জ -->
+                <div onclick="alert('মোবাইল রিচার্জ অপশনটি লোড হচ্ছে...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;">
+                    <span style="font-size: 28px;">📱</span>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600; color: #333;">রিচার্জ</p>
+                </div>
+
+                <!-- পেমেন্ট বা বিল পে -->
+                <div onclick="alert('বিল পে অপশনটি লোড হচ্ছে...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;">
+                    <span style="font-size: 28px;">🧾</span>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600; color: #333;">বিল পে</p>
+                </div>
+
+                <!-- ক্যাশ আউট -->
+                <div onclick="alert('ক্যাশ আউট অপশনটি লোড হচ্ছে...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;">
+                    <span style="font-size: 28px;">🏧</span>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600; color: #333;">ক্যাশ আউট</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- বটম নেভিগেশন বার (Footer) -->
+        <div style="background-color: #ffffff; border-top: 1px solid #e5e7eb; padding: 15px 0; display: flex; justify-content: space-around; font-size: 12px; color: #666;">
+            <div style="text-align: center; color: #11998e; font-weight: bold; cursor: pointer;">🏠 হোম</div>
+            <div onclick="alert('লেনদেনের ইতিহাস খালি!')" style="text-align: center; cursor: pointer;">📊 স্টেটমেন্ট</div>
+            <div onclick="location.reload()" style="text-align: center; cursor: pointer;">🚪 লগআউট</div>
+        </div>
+
+    </div>
+
+    <!-- জাভাস্ক্রিপ্ট ম্যাজিক -->
+    <script>
+        function checkBalance() {
+            var balanceBox = document.getElementById("balanceBox");
+            // বাটনে ক্লিক করলে আসল ব্যালেন্স দেখাবে
+            balanceBox.innerHTML = "৳ ৫,৪২০.৫০";
+            balanceBox.style.background = "#e8f5e9";
+            balanceBox.style.color = "#2e7d32";
+            
+            // ৩ সেকেন্ড পর ব্যালেন্স আবার স্বয়ংক্রিয়ভাবে লুকিয়ে যাবে
+            setTimeout(function() {
+                balanceBox.innerHTML = "💰 ব্যালেন্স দেখতে এখানে ট্যাপ করুন";
+                balanceBox.style.background = "white";
+                balanceBox.style.color = "#11998e";
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobilepay App</title>
+</head>
+<body style="background-color: #f3f4f6; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+    <!-- ১. লগইন পেজ কন্টেইনার (শুরুতে এটি দেখা যাবে) -->
+    <div id="loginPage" style="background-color: white; width: 100%; max-width: 360px; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center;">
+        
+        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #11998e, #38ef7d); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; color: white; font-size: 32px; font-weight: bold; box-shadow: 0 4px 12px rgba(56, 239, 125, 0.3);">
+            M
+        </div>
+
+        <h2 style="color: #11998e; margin: 0 0 5px 0; font-size: 26px; font-weight: 800;">Mobilepay</h2>
+        <p style="color: #666; margin: 0 0 25px 0; font-size: 14px;">আপনার মোবাইল ব্যাংকিং পার্টনার</p>
+
+        <!-- লগইন ফর্ম -->
+        <form onsubmit="handleLogin(event)">
+            <input type="text" placeholder="মোবাইল নম্বর" required style="width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 16px; box-sizing: border-box; background-color: #f9fafb; outline: none;">
+            
+            <div style="position: relative; margin-bottom: 16px; width: 100%; box-sizing: border-box;">
+                <input type="password" id="passwordInput" placeholder="সিক্রেট পিন" required style="width: 100%; padding: 14px 50px 14px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 16px; box-sizing: border-box; background-color: #f9fafb; outline: none;">
+                <button type="button" onclick="togglePassword()" id="toggleBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #11998e; font-size: 12px; font-weight: bold; cursor: pointer; padding: 5px;">SHOW</button>
+            </div>
+            
+            <button type="submit" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #11998e, #38ef7d); color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(17, 153, 142, 0.2); margin-bottom: 15px;">লগইন করুন</button>
+        </form>
+    </div>
+
+    <!-- ২. হোম স্ক্রিন কন্টেইনার (শুরুতে এটি লুকিয়ে থাকবে: display: none) -->
+    <div id="homePage" style="background-color: white; width: 100%; max-width: 360px; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.1); position: relative; display: none; flex-direction: column;">
+        
+        <div style="background: linear-gradient(135deg, #11998e, #38ef7d); padding: 25px 20px; color: white; border-radius: 0 0 25px 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px;">Mobilepay</h3>
+                    <p style="margin: 5px 0 0 0; font-size: 13px;">স্বাগতম, ইউজার!</p>
+                </div>
+                <div style="width: 40px; height: 40px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; border: 2px solid white;">M</div>
+            </div>
+
+            <div onclick="checkBalance()" style="background-color: white; color: #11998e; margin-top: 20px; padding: 12px; border-radius: 30px; text-align: center; font-weight: bold; cursor: pointer;" id="balanceBox">
+                💰 ব্যালেন্স দেখতে এখানে ট্যাপ করুন
+            </div>
+        </div>
+
+        <div style="padding: 20px; flex: 1;">
+            <h4 style="color: #666; margin: 0 0 15px 0; font-size: 14px; text-transform: uppercase;">প্রধান সেবাসমূহ</h4>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                <div onclick="alert('সেন্ড মানি অপশন...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;"><span style="font-size: 28px;">💸</span><p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600;">সেন্ড মানি</p></div>
+                <div onclick="alert('মোবাইল রিচার্জ...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;"><span style="font-size: 28px;">📱</span><p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600;">রিচার্জ</p></div>
+                <div onclick="alert('বিল পে...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;"><span style="font-size: 28px;">🧾</span><p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600;">বিল পে</p></div>
+                <div onclick="alert('ক্যাশ আউট...')" style="background-color: #f9fafb; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; cursor: pointer;"><span style="font-size: 28px;">🏧</span><p style="margin: 8px 0 0 0; font-size: 14px; font-weight: 600;">ক্যাশ আউট</p></div>
+            </div>
+        </div>
+
+        <div style="background-color: #ffffff; border-top: 1px solid #e5e7eb; padding: 15px 0; display: flex; justify-content: space-around; font-size: 12px; color: #666;">
+            <div style="text-align: center; color: #11998e; font-weight: bold;">🏠 হোম</div>
+            <div onclick="logoutApp()" style="text-align: center; cursor: pointer; color: #f44336; font-weight: bold;">🚪 লগআউট</div>
+        </div>
+
+    </div>
+
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            // লগইন পেজ লুকিয়ে ফেলো
+            document.getElementById("loginPage").style.display = "none";
+            // হোম পেজ ওপেন করো
+            document.getElementById("homePage").style.display = "flex";
+        }
+
+        function logoutApp() {
+            // হোম পেজ লুকিয়ে আবার লগইন পেজে ফেরত যাও
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("loginPage").style.display = "block";
+        }
+
+        function togglePassword() {
+            var pwd = document.getElementById("passwordInput");
+            var btn = document.getElementById("toggleBtn");
+            if (pwd.type === "password") {
+                pwd.type = "text";
+                btn.innerHTML = "HIDE";
+            } else {
+                pwd.type = "password";
+                btn.innerHTML = "SHOW";
+            }
+        }
+
+        function checkBalance() {
+            var box = document.getElementById("balanceBox");
+            box.innerHTML = "৳ ৫,৪২০.৫০";
+            setTimeout(function() {
+                box.innerHTML = "💰 ব্যালেন্স দেখতে এখানে ট্যাপ করুন";
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
+            
